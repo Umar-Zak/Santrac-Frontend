@@ -1,78 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap");
 
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap');
-
-:root{
-  --color--primary:#ffaa01;
-  --color--hero-image:#e7e7e9;
-  --color--nav-link:#737c87;
-  --color--hero-text:#132235;
-  --color--section-header:#253344;
-  --color--normal-text:#989fa7;
-  --color--price:#999fa7;
-  --color--icon-and-footer:#bababa;
-  --color--product-name:#616a77;
-  --color--product-description-header:#182639;
+:root {
+  --color--primary: #ffaa01;
+  --color--hero-image: #e7e7e9;
+  --color--nav-link: #737c87;
+  --color--hero-text: #132235;
+  --color--section-header: #253344;
+  --color--normal-text: #989fa7;
+  --color--price: #999fa7;
+  --color--icon-and-footer: #bababa;
+  --color--product-name: #616a77;
+  --color--product-description-header: #182639;
 }
 
-html{
-  font-size: 62.5%
+html {
+  font-size: 62.5%;
 }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-
+  font-family: "Inter", sans-serif;
 }
 
- .button{
-   padding-inline: 2.5rem;
-   font-weight: 500;
-   line-height: 2.8rem;
-   font-size: 1.6rem;
-   outline: none;
-   cursor: pointer;
+.button {
+  padding-inline: 2.5rem;
+  font-weight: 500;
+  line-height: 2.8rem;
+  font-size: 1.6rem;
+  outline: none;
+  cursor: pointer;
   padding-block: 1.3rem;
   font-family: Inter !important;
   border: none;
- }
+}
 
+.button--primary {
+  background: var(--color--primary);
+  color: white;
+}
 
- .button--primary{
-   background: var(--color--primary);
-   color: white;
- }
+.button--primary:hover {
+  background: white;
+  color: var(--color--primary);
+  border: 2px solid var(--color--primary);
+}
 
- .button--primary:hover{
-   background: white;
-   color: var(--color--primary);
-   border: 2px solid var(--color--primary);
- }
+@media screen and (min-width: 1024px) {
+  .button {
+    padding-block: 1.6rem;
+    padding-inline: 3rem;
+    line-height: 3rem;
+  }
+}
 
+.section--header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  line-height: 4.8rem;
+  color: var(--color--section-header);
+  text-align: center;
+}
 
- @media screen and (min-width:1024px) {
-   .button{
-     padding-block: 1.6rem;
-     padding-inline: 3rem;
-     line-height: 3rem;
-   }
- }
+@media screen and (min-width: 1024px) {
+  .section--header {
+    font-size: 3.3rem;
+    line-height: 5.2rem;
+  }
+}
 
- .section--header{
-   text-transform: uppercase;
-   font-weight: 700;
-   font-size: 2.5rem;
-   margin-bottom: 3rem;
-   line-height: 4.8rem;
-   color: var(--color--section-header);
-   text-align: center;
- }
+.service {
+  width: 320px;
+  padding-top: 1.4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
- @media screen and (min-width:1024px) {
-   .section--header{
-     font-size: 3.3rem;
-     line-height: 5.2rem;
-   }
- }
+.service__icon {
+  font-size: 4rem;
+  margin-bottom: 0;
+  color: #838383;
+}
+
+.service__title {
+  font-weight: 700;
+  line-height: 3rem;
+  font-size: 2rem;
+  margin-bottom: -7px;
+  color: #364253;
+  text-transform: uppercase;
+}
+
+.service__text {
+  font-weight: 400;
+  line-height: 1.9rem;
+  font-size: 1.6rem;
+  color: var(--color--normal-text);
+}
+
+@media screen and (min-width: 1024px) {
+  .service {
+    width: 300px;
+    margin: 0;
+  }
+
+  .service__title {
+    font-size: 1.4rem;
+    margin-bottom: -10px;
+  }
+
+  .service__text {
+    font-size: 1.4rem;
+  }
+}
+
+.product {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.product__image {
+  width: 100%;
+  height: 320px;
+  background: #ebebeb;
+}
+
+.product__name {
+  line-height: 2.2rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #6f7883;
+  text-transform: uppercase;
+  margin-top: 46px;
+  letter-spacing: 1px;
+}
+
+.product__price {
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: var(--color--price);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-top: -11px;
+}
+
+@media screen and (min-width: 1024px) {
+  .product {
+    width: 230px;
+    margin: 0;
+  }
+
+  .product__image {
+    height: 230px;
+  }
+
+  .product__name {
+    margin-top: 27px;
+  }
+
+  .product__price {
+    margin-top: -18px;
+  }
+}
