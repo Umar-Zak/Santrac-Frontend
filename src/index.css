@@ -1,13 +1,61 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap');
+
+:root{
+  --color--primary:#ffaa01;
+  --color--hero-image:#e7e7e9;
+  --color--nav-link:#737c87;
+  --color--hero-text:#132235;
+  --color--section-header:#253344;
+  --color--normal-text:#989fa7;
+  --color--price:#999fa7;
+  --color--icon-and-footer:#bababa;
+  --color--product-name:#616a77;
+  --color--product-description-header:#182639;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html{
+  font-size: 62.5%
 }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+
+}
+
+ .button{
+   padding-inline: 2.5rem;
+   font-weight: 500;
+   line-height: 2.8rem;
+   font-size: 1.6rem;
+   outline: none;
+   cursor: pointer;
+  padding-block: 1.3rem;
+  font-family: Inter !important;
+  border: none;
+ }
+
+
+ .button--primary{
+   background: var(--color--primary);
+   color: white;
+ }
+
+ .button--primary:hover{
+   background: white;
+   color: var(--color--primary);
+   border: 2px solid var(--color--primary);
+ }
+
+
+ @media screen and (min-width:1024px) {
+   .button{
+     padding-block: 1.6rem;
+     padding-inline: 3rem;
+     line-height: 3rem;
+   }
+ }
