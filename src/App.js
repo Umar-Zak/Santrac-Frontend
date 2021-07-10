@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from './component/button';
+import SectionHeader from './component/section-header';
 
 function App() {
   return (
 
-    <Button type="button--primary" text="SHOW MORE" />
+    <SectionHeader text="know our services" />
   );
 }
 
