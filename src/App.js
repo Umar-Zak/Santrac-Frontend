@@ -5,11 +5,14 @@ import Button from './component/button';
 import SectionHeader from './component/section-header';
 import Service from './component/service';
 import Product from './component/product';
+import Navbar from './component/navbar';
+import Slide from './component/slide';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
 
-    <Product name="Cement" price="500"/>
+   <HomePage/>
   );
 }
 
