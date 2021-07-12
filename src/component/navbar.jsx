@@ -25,8 +25,8 @@ const Navbar = () => {
                 <FaTimes onClick={handleNavBarVisibility} className="bars" />
             </div>
                 <li className="mobile-list--item"><a href="#" className="mobile--link">Home</a></li>
-                 <li className="mobile-list--item"><a href="#" className="mobile--link">about</a></li>
-                <li className="mobile-list--item"><a href="#" className="mobile--link">Product</a></li>
+                 <li className="mobile-list--item"><a href="#about" className="mobile--link">about</a></li>
+                <li className="mobile-list--item"><a href="/product" className="mobile--link">Product</a></li>
                 <li className="mobile-list--item"><a href="#" className="mobile--link">Contact</a></li>
                
        </ul>}
@@ -34,9 +34,9 @@ const Navbar = () => {
    
         <div className="navbar-desktop">
             <ul className="desktop-nav--links">
-                <li className="desktop-list--item"><a href="#" className="desktop--link">Home</a></li>
-                <li className="desktop-list--item"><a href="#" className="desktop--link">About</a></li>
-                <li className="desktop-list--item"><a href="#" className="desktop--link">Products</a></li>
+                <li className="desktop-list--item"><a href="/" className="desktop--link">Home</a></li>
+                <li className="desktop-list--item"><a href="#about" className="desktop--link">About</a></li>
+                <li className="desktop-list--item"><a href="/products" className="desktop--link">Products</a></li>
                 <li className="desktop-list--item"><a href="#" className="desktop--link">Contact</a></li>
         </ul>
             <div className="desktop-search--area">

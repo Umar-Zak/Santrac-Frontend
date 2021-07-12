@@ -1,5 +1,8 @@
 import React from 'react';
 import {FaFlag,FaBuilding,FaTools,FaHouseDamage} from "react-icons/fa"
+import Footer from '../component/footer';
+import AboutImage from '../component/image';
+import Mission from '../component/mission';
 import Navbar from '../component/navbar';
 import Product from '../component/product';
 import SectionHeader from '../component/section-header';
@@ -43,6 +46,21 @@ const HomePage = () => {
                 <Product name="Tape measure" price="90.00" showPrice={true}  />
             </div>
         </section>
+        <section id="about" className="about-section">
+            <SectionHeader text="about us" />
+            <p className="about--tagline">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, eaque.</p>
+            <div className="about__content-container">
+                <Mission title="our mission" text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium" />
+                <AboutImage/>
+            </div>
+            <div className="about__content-container">
+                     <Mission title="our vision" text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium" />
+                <div style={{order:-1 }}>
+                    <AboutImage/>
+                </div>
+            </div>
+        </section>
+        <Footer/>
     </div>);
 }
  

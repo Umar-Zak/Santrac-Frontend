@@ -8,11 +8,15 @@ import Product from './component/product';
 import Navbar from './component/navbar';
 import Slide from './component/slide';
 import HomePage from './pages/HomePage';
+import Footer from './component/footer';
+import AboutImage from './component/image';
+import Mission from './component/mission';
+import ProductPage from './pages/ProductsPage';
 
 function App() {
   return (
-
-   <HomePage/>
+    <HomePage/>
+    
   );
 }
 
