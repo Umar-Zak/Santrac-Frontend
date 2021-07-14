@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {FaBuilding} from "react-icons/fa"
+import { FaBuilding } from "react-icons/fa"
+import {Switch,Route} from "react-router-dom"
 import Button from './component/button';
 import SectionHeader from './component/section-header';
 import Service from './component/service';
@@ -12,10 +13,21 @@ import Footer from './component/footer';
 import AboutImage from './component/image';
 import Mission from './component/mission';
 import ProductPage from './pages/ProductsPage';
+import ProductDescription from './pages/ProductDescriptionPage';
 
 function App() {
   return (
-    <HomePage/>
+    <Switch>
+      <Route path="/products" >
+        <ProductPage/>
+      </Route>
+      <Route path="/product/:id">
+      <ProductDescription/>
+      </Route>
+      <Route path="/" >
+         <HomePage/>
+      </Route>
+   </Switch>
     
   );
 }

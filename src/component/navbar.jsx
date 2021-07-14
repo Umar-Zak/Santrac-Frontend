@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {FaBars,FaTimes,FaSearch} from "react-icons/fa"
+import { FaBars, FaTimes, FaSearch } from "react-icons/fa"
+import {Link}from "react-router-dom"
 const Navbar = () => {
     const [navbarVisible,setNavbarVisible]=useState(false)
     const [searchBoxVisible,setSearchBoxVisible]=useState(false)
@@ -24,20 +25,20 @@ const Navbar = () => {
                 <h2 className="mobile-logo">SanTrac</h2>
                 <FaTimes onClick={handleNavBarVisibility} className="bars" />
             </div>
-                <li className="mobile-list--item"><a href="#" className="mobile--link">Home</a></li>
-                 <li className="mobile-list--item"><a href="#about" className="mobile--link">about</a></li>
-                <li className="mobile-list--item"><a href="/product" className="mobile--link">Product</a></li>
-                <li className="mobile-list--item"><a href="#" className="mobile--link">Contact</a></li>
+                <li className="mobile-list--item"><Link to="/" className="mobile--link">Home</Link></li>
+                 <li className="mobile-list--item"><Link to="#about" className="mobile--link">about</Link></li>
+                <li className="mobile-list--item"><Link to="/product" className="mobile--link">Product</Link></li>
+                <li className="mobile-list--item"><Link to="#" className="mobile--link">Contact</Link></li>
                
        </ul>}
         </nav>
    
         <div className="navbar-desktop">
             <ul className="desktop-nav--links">
-                <li className="desktop-list--item"><a href="/" className="desktop--link">Home</a></li>
-                <li className="desktop-list--item"><a href="#about" className="desktop--link">About</a></li>
-                <li className="desktop-list--item"><a href="/products" className="desktop--link">Products</a></li>
-                <li className="desktop-list--item"><a href="#" className="desktop--link">Contact</a></li>
+                <li className="desktop-list--item"><Link to="/" className="desktop--link">Home</Link></li>
+                <li className="desktop-list--item"><Link to="#about" className="desktop--link">About</Link></li>
+                <li className="desktop-list--item"><Link to="/products" className="desktop--link">Products</Link></li>
+                <li className="desktop-list--item"><Link to="#" className="desktop--link">Contact</Link></li>
         </ul>
             <div className="desktop-search--area">
                 {searchBoxVisible&& <input type="text" placeholder="Search" autoFocus />}

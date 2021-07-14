@@ -623,3 +623,77 @@ a {
   background: gainsboro;
   margin-top: 40px;
 }
+
+.description-container {
+  padding-block: 40px;
+  border-bottom: 2px solid gainsboro;
+  padding-inline: 3rem;
+}
+
+.description-image {
+  background: #ebebeb;
+  width: 320px;
+  height: 210px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.description-title {
+  line-height: 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c2b3d;
+  text-transform: uppercase;
+}
+
+.description-price {
+  font-weight: 500;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  color: #7b838e;
+  text-transform: uppercase;
+}
+
+.description-tagline {
+  line-height: 2.4rem;
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: #344152;
+}
+
+.description-text {
+  line-height: 2rem;
+  font-weight: 500;
+  color: var(--color--normal-text);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .description-container {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    column-gap: 40px;
+  }
+
+  .description-image {
+    margin: 0;
+    width: 550px;
+    height: 300px;
+    justify-self: end;
+  }
+
+  .description-title {
+    margin-top: -3px;
+  }
+  .description-text {
+    text-align: left;
+    max-width: 440px;
+    font-size: 1.2rem;
+    margin-top: -7px;
+  }
+  .description-tagline {
+    margin-top: -6px;
+  }
+}
