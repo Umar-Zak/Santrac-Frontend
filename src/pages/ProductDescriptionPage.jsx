@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import jwt_decode from "jwt-decode";
 import { useParams, useHistory } from "react-router-dom";
+import { usePaystackPayment } from "react-paystack";
+import { toast } from "react-toastify";
 import Navbar from "../component/navbar";
 import SectionHeader from "../component/section-header";
 import SortContainer from "../component/sort-container";
@@ -9,12 +12,38 @@ import { getProductById, getAllProducts } from "../utils/products";
 const ProductDescription = () => {
   const { id } = useParams();
   const history = useHistory();
+
   const product = getProductById(id);
   const products = getAllProducts().filter((p) => p._id.toString() !== id);
 
   const handleClick = (id) => {
     history.push(`/product/${id}`);
   };
+
+  let user = null;
+  if (localStorage.getItem("token")) {
+    const token = localStorage.getItem("token");
+    user = jwt_decode(token);
+  }
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: user ? user.email : "",
+    amount: product.price * 100,
+    publicKey: "pk_test_f6096b2cf6577c0741535bde96177c80513ffc3a",
+    currency: "GHS",
+  };
+
+  const onSuccess = (reference) => {
+    toast("Thanks for your order");
+    history.push("/");
+  };
+
+  const onClose = () => {
+    toast("Order cancelled");
+  };
+
+  const pay = usePaystackPayment(config);
 
   return (
     <div className="block">
@@ -30,7 +59,12 @@ const ProductDescription = () => {
           <p className="description-price">GHS {product.price}</p>
           <h4 className="description-tagline">Description</h4>
           <p className="description-text">{product.description} </p>
-          <button className="button button--primary">BUY NOW</button>
+          <button
+            onClick={() => pay(onSuccess, onClose)}
+            className="button button--primary"
+          >
+            BUY NOW
+          </button>
         </d>
       </div>
       <SortContainer />
