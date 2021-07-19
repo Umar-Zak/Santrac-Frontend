@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Navbar from "../component/navbar";
 import SectionHeader from "../component/section-header";
@@ -8,7 +8,17 @@ import SortContainer from "../component/sort-container";
 import { getAllProducts } from "../utils/products";
 
 const ProductPage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getAllProducts()
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const history = useHistory();
+
   const handleClick = (id) => {
     history.push(`/product/${id}`);
   };
@@ -21,7 +31,7 @@ const ProductPage = () => {
         </div>
         <SortContainer show={true} />
         <div className="product-container">
-          {getAllProducts().map((p) => (
+          {products.map((p) => (
             <Product
               key={p._id}
               handleClick={() => {

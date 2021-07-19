@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { useParams, useHistory } from "react-router-dom";
 import { usePaystackPayment } from "react-paystack";
@@ -10,11 +10,24 @@ import Product from "../component/product";
 import Footer from "../component/footer";
 import { getProductById, getAllProducts } from "../utils/products";
 const ProductDescription = () => {
+  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
   const { id } = useParams();
   const history = useHistory();
 
-  const product = getProductById(id);
-  const products = getAllProducts().filter((p) => p._id.toString() !== id);
+  useEffect(() => {
+    getAllProducts()
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => console.log(err));
+
+    getProductById(id)
+      .then((res) => {
+        setProduct(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleClick = (id) => {
     history.push(`/product/${id}`);

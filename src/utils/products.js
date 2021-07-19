@@ -1,4 +1,6 @@
-const products=[
+import { FaExclamation } from "react-icons/fa"
+import http from "./http"
+const products = [
     { _id: 1,name:"Tile cement",price:230,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus aut quidem officiis reprehenderit. Aliquid quis similique facilis aliquam dolor.",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/tile-cement.jpg?alt=media&token=83c8d8fb-0bb1-47c5-99b6-b901b25795ea" },
     { _id: 2,name:"Chisel",price:830,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus aut quidem officiis reprehenderit. Aliquid quis similique facilis aliquam dolor.",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/chisel.jpg?alt=media&token=203266fd-68c3-46c3-a226-b9cc43ea4e04" },
     { _id: 3,name:"Hammer",price:90,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus aut quidem officiis reprehenderit. Aliquid quis similique facilis aliquam dolor.",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/hammer.jpg?alt=media&token=c3082861-e533-4ac7-b61d-069d79247733" },
@@ -20,13 +22,23 @@ const hotProducts = [
      { _id: 4,name:"aluminium windows",price:500,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/al-windows.jpg?alt=media&token=8bdbb182-1ffc-43f9-9e91-599fedfbe909" },
 ]
 
-export  function getAllProducts() {
-    return [...products]
+export async function getAllProducts() {
+    try {
+        const { data } = await http.get("products/all")
+        return data
+    } catch (ex) {
+        throw ex
+    }
 }
 
- export function getProductById(id) {
-    const product = products.find(p => p._id.toString() === id)
-    return product
+ export async function getProductById(id) {
+     try {
+         const { data } =await http.get(`products/get/${id}`)
+         return data
+     }
+     catch (ex) {
+         throw ex
+     }
 }
 
 export function getHotProducts() {
