@@ -14,6 +14,8 @@ import AboutImage from './component/image';
 import Mission from './component/mission';
 import ProductPage from './pages/ProductsPage';
 import ProductDescription from './pages/ProductDescriptionPage';
+import Login from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
@@ -24,9 +26,16 @@ function App() {
       <Route path="/product/:id">
       <ProductDescription/>
       </Route>
+      <Route path="/login" >
+        <Login/>
+      </Route>
+      <Route path="/register">
+        <RegisterPage/>
+      </Route>
       <Route path="/" >
          <HomePage/>
       </Route>
+      
    </Switch>
     
   );
