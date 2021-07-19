@@ -34,7 +34,7 @@ const Login = () => {
           }}
           validationSchema={schema}
         >
-          {({ handleChange, handleBlur, errors, touched }) => (
+          {({ handleChange, errors, touched }) => (
             <Form>
               {touched.email && errors.email && <Error text={errors.email} />}
               <Input

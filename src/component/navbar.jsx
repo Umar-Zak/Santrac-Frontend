@@ -13,6 +13,8 @@ const Navbar = () => {
     setNavbarVisible(!navbarVisible);
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <React.Fragment>
       <nav className="mobile-nav">
@@ -47,9 +49,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="mobile-list--item">
-              <Link to="/login" className="mobile--link">
-                Login
-              </Link>
+              {!token && (
+                <Link to="/login" className="mobile--link">
+                  Login
+                </Link>
+              )}
+              {token && (
+                <Link to="/logout" className="mobile--link">
+                  Logout
+                </Link>
+              )}
             </li>
           </ul>
         )}
@@ -78,9 +87,16 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="desktop-list--item">
-            <Link to="/login" className="desktop--link">
-              Login
-            </Link>
+            {!token && (
+              <Link to="/login" className="mobile--link">
+                Login
+              </Link>
+            )}
+            {token && (
+              <Link to="/logout" className="mobile--link">
+                Logout
+              </Link>
+            )}
           </li>
         </ul>
         <div className="desktop-search--area">

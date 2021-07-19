@@ -25,7 +25,7 @@ export  function getAllProducts() {
 }
 
  export function getProductById(id) {
-    const product = products.find(p => p._id === id)
+    const product = products.find(p => p._id.toString() === id)
     return product
 }
 
