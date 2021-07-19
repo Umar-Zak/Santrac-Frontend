@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { FaFlag, FaBuilding, FaTools, FaHouseDamage } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import Footer from "../component/footer";
@@ -9,10 +10,19 @@ import Product from "../component/product";
 import SectionHeader from "../component/section-header";
 import Service from "../component/service";
 import Slide from "../component/slide";
-import { getHotProducts, getHighlightProduct } from "../utils/products";
+import { getHotProducts, getAllProducts } from "../utils/products";
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
   const history = useHistory();
+
+  useEffect(() => {
+    getAllProducts()
+      .then((res) => {
+        setProducts(res.filter((r, index) => index < 4));
+      })
+      .catch((err) => toast("Error connecting to the server"));
+  }, []);
 
   const handleClick = (id) => {
     history.push(`/product/${id}`);
@@ -64,7 +74,7 @@ const HomePage = () => {
       <section className="product-section">
         <SectionHeader text="Products" />
         <div className="product-container">
-          {getHighlightProduct().map((p) => {
+          {products.map((p) => {
             return (
               <Product
                 key={p._id}
