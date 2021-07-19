@@ -30,7 +30,7 @@ const ProductDescription = () => {
     reference: new Date().getTime().toString(),
     email: user ? user.email : "",
     amount: product.price * 100,
-    publicKey: "pk_test_f6096b2cf6577c0741535bde96177c80513ffc3a",
+    publicKey: "pk_live_f83adbe9ebb71973a647a8e49b72764bd816e49e",
     currency: "GHS",
   };
 
