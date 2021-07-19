@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import { useParams, useHistory } from "react-router-dom";
 import { usePaystackPayment } from "react-paystack";
