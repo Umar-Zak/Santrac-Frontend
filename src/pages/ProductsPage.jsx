@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import Navbar from "../component/navbar";
 import SectionHeader from "../component/section-header";
@@ -15,7 +16,7 @@ const ProductPage = () => {
       .then((res) => {
         setProducts(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast("Error connecting to the server"));
   }, []);
   const history = useHistory();
 

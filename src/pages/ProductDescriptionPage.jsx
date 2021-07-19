@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import { useParams, useHistory } from "react-router-dom";
 import { usePaystackPayment } from "react-paystack";
@@ -20,13 +21,13 @@ const ProductDescription = () => {
       .then((res) => {
         setProducts(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast("Error connecting to the server"));
 
     getProductById(id)
       .then((res) => {
         setProduct(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast("Error connecting to the server"));
   }, []);
 
   const handleClick = (id) => {

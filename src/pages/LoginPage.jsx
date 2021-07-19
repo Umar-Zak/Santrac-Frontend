@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../component/input";
@@ -27,9 +28,9 @@ const Login = () => {
             try {
               await login(values);
             } catch ({ response: { data, status } }) {
-              if (status === 400) return alert(data); //Will improve this line of code with a proper view
+              if (status === 400) return toast(data);
 
-              alert("Unexpected error. Try again"); //Will improve this line of code with a proper view
+              toast("Unexpected error. Try again");
             }
           }}
           validationSchema={schema}
