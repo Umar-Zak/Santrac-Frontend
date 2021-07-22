@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Formik, Form } from "formik";
@@ -9,12 +9,15 @@ import Button from "../component/button";
 import SectionHeader from "../component/section-header";
 import Error from "../component/error";
 import { login } from "../utils/user";
+import Spiner from "../component/spiner";
 
 const Login = () => {
   const schema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
+
+  const [showSpiner, setShowSpiner] = useState(false);
 
   return (
     <div className="block">
@@ -26,8 +29,10 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           onSubmit={async (values) => {
             try {
+              setShowSpiner(true);
               await login(values);
             } catch ({ response: { data, status } }) {
+              setShowSpiner(false);
               if (status === 400) return toast(data);
 
               toast("Unexpected error. Try again");
@@ -53,7 +58,10 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
               />
-              <Button text="Login" type="button--primary button--large" />
+              {!showSpiner && (
+                <Button text="Login" type="button--primary button--large" />
+              )}
+              <div className="spiner-container">{showSpiner && <Spiner />}</div>
             </Form>
           )}
         </Formik>

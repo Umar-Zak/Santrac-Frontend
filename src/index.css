@@ -738,3 +738,25 @@ a {
     margin-top: 100px;
   }
 }
+
+/* Loader */
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: lightblue;
+  border-right-color: orange;
+  animation: s2 1s infinite linear;
+}
+@keyframes s2 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spiner-container {
+  display: flex;
+  justify-content: center;
+}
