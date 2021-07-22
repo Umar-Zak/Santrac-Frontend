@@ -10,6 +10,7 @@ import Login from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Logout from './component/Logout';
 import Dashboard from './pages/Dashboard';
+import CheckoutPage from './pages/CheckoutPage';
 
 function App() {
  let user=null
@@ -39,7 +40,10 @@ function App() {
       <Route path="/dashboard" render={({ }) => (
         user?<Dashboard/>:<Redirect path="/"/>
       )} >
-        
+      </Route>
+      <Route path="/checkout" render={({ }) => (
+        user?<CheckoutPage/>:<Redirect path="/"/>
+      )} >
       </Route>
       <Route path="/logout">
         <Logout/>

@@ -7,6 +7,7 @@ import Product from "../component/product";
 import Footer from "../component/footer";
 import SortContainer from "../component/sort-container";
 import { getAllProducts } from "../utils/products";
+import Cart from "../component/cart";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -18,8 +19,8 @@ const ProductPage = () => {
       })
       .catch((err) => toast("Error connecting to the server"));
   }, []);
-  const history = useHistory();
 
+  const history = useHistory();
   const handleClick = (id) => {
     history.push(`/product/${id}`);
   };
@@ -48,6 +49,7 @@ const ProductPage = () => {
 
         <div className="divider"></div>
         <Footer />
+        <Cart />
       </div>
     </React.Fragment>
   );

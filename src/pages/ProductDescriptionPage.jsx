@@ -8,17 +8,20 @@ import SectionHeader from "../component/section-header";
 import SortContainer from "../component/sort-container";
 import Product from "../component/product";
 import Footer from "../component/footer";
-import { getProductById, getAllProducts } from "../utils/products";
+import { getProductById, getAllProducts, addTocart } from "../utils/products";
+import Cart from "../component/cart";
 const ProductDescription = () => {
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
   const { id } = useParams();
   const history = useHistory();
+  const [products, setProducts] = useState([]);
+  const [ID, setID] = useState(id);
+  const [product, setProduct] = useState({});
+  const [current, setCurrent] = useState("");
 
   useEffect(() => {
     getAllProducts()
       .then((res) => {
-        setProducts(res);
+        setProducts(res.filter((p) => p._id !== id));
       })
       .catch((err) => toast("Error connecting to the server"));
 
@@ -27,9 +30,10 @@ const ProductDescription = () => {
         setProduct(res);
       })
       .catch((err) => toast("Error connecting to the server"));
-  }, []);
+  }, [ID]);
 
   const handleClick = (id) => {
+    setID(id);
     history.push(`/product/${id}`);
   };
 
@@ -67,18 +71,21 @@ const ProductDescription = () => {
 
       <div className="description-container">
         <img src={product.image} className="description-image" />
-        <d className="description-content">
+        <div className="description-content">
           <h3 className="description-title">{product.name}</h3>
           <p className="description-price">GHS {product.price}</p>
           <h4 className="description-tagline">Description</h4>
           <p className="description-text">{product.description} </p>
           <button
-            onClick={() => pay(onSuccess, onClose)}
+            onClick={() => {
+              addTocart(product);
+              setCurrent(product);
+            }}
             className="button button--primary"
           >
-            BUY NOW
+            ADD TO CART
           </button>
-        </d>
+        </div>
       </div>
       <SortContainer />
 
@@ -90,11 +97,13 @@ const ProductDescription = () => {
             price={p.price}
             showPrice={true}
             handleClick={() => handleClick(p._id)}
+            key={p._id}
           />
         ))}
       </div>
       <div className="divider"></div>
       <Footer />
+      <Cart />
     </div>
   );
 };

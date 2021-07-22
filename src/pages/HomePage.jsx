@@ -11,6 +11,7 @@ import SectionHeader from "../component/section-header";
 import Service from "../component/service";
 import Slide from "../component/slide";
 import { getHotProducts, getAllProducts } from "../utils/products";
+import Cart from "../component/cart";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -112,6 +113,7 @@ const HomePage = () => {
         </div>
       </section>
       <Footer />
+      <Cart items={2} />
     </div>
   );
 };
