@@ -819,3 +819,71 @@ td {
   font-size: 2rem;
   color: var(--color--hero-text);
 }
+
+.dashboard {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 15fr 85fr;
+  height: 75vh;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid gainsboro;
+}
+
+.navigation {
+  height: 100%;
+  background: #e8f0f2;
+  border-right: 1px solid #39a2db;
+}
+
+.dashboard-links .mobile-list--item {
+  border: none;
+}
+
+.dashboard-links .mobile--link {
+  color: #053742;
+}
+.dashboard .mobile--link:hover {
+  color: var(--color--primary);
+}
+.active-link {
+  color: var(--color--primary) !important;
+}
+
+.content-section {
+  padding-inline: 4rem;
+}
+
+.product-row {
+  cursor: pointer;
+}
+
+.product-row:hover {
+  background: #e8f0f2;
+}
+
+.pages {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.floating-button {
+  width: 40px;
+  height: 40px;
+  background: var(--color--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 15%;
+  bottom: 25%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.floating-icon {
+  color: white;
+  font-weight: 700;
+  width: 25px;
+  height: 25px;
+}
