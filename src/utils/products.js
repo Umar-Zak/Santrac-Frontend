@@ -69,3 +69,23 @@ export async function order(body) {
         throw ex
     }
 }
+
+export async function getAllCategories() {
+    try {
+        const { data } = await http.get("products/all/categories")
+        return data
+    }
+    catch (ex) {
+        throw ex
+    }
+}
+
+export async function addCategory(body){
+    try {
+        const { data } = await http.post("products/add/categories", body)
+        return data
+    }
+    catch (ex) {
+        throw ex
+    }
+}

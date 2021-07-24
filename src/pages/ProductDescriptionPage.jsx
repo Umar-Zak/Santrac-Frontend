@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { useParams, useHistory } from "react-router-dom";
-import { usePaystackPayment } from "react-paystack";
 import { toast } from "react-toastify";
 import Navbar from "../component/navbar";
 import SectionHeader from "../component/section-header";
@@ -43,25 +42,7 @@ const ProductDescription = () => {
     user = jwt_decode(token);
   }
 
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: user ? user.email : "",
-    amount: product.price * 100,
-    publicKey: "pk_live_f83adbe9ebb71973a647a8e49b72764bd816e49e",
-    currency: "GHS",
-  };
-
-  const onSuccess = (reference) => {
-    toast("Thanks for your order");
-    history.push("/");
-  };
-
-  const onClose = () => {
-    toast("Order cancelled");
-  };
-
-  const pay = usePaystackPayment(config);
-
+ 
   return (
     <div className="block">
       <Navbar />

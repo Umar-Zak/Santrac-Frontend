@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CategoryTable from "../component/category-table";
 import Footer from "../component/footer";
 import Navbar from "../component/navbar";
 import ProductTable from "../component/products-table";
@@ -69,6 +70,7 @@ const Dashboard = () => {
           </ul>
         </div>
         <div className="content-section">
+          {link === "categories" && <CategoryTable />}
           {link === "products" && <ProductTable />}
         </div>
       </div>

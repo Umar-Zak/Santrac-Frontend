@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { getAllProducts } from "../utils/products";
 import { paginate } from "../utils/paginate";
@@ -9,7 +10,7 @@ const ProductTable = () => {
   let [products, setProducts] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const pageSize = 15;
-
+  const history = useHistory();
   const handlePageChange = (page) => {
     setPageNumber(page);
   };
@@ -26,6 +27,10 @@ const ProductTable = () => {
       });
   }, []);
 
+  const handleAddProduct = () => {
+    history.push("/add-product");
+  };
+
   let pages = Math.ceil(products.length / pageSize);
   pages = Array.from({ length: pages }, (_, i) => i + 1);
 
@@ -33,7 +38,7 @@ const ProductTable = () => {
 
   return (
     <div>
-      <table style={{ width: "100%" }} className="table">
+      <table className="table">
         <thead className="thead">
           <tr>
             <th>Product Name</th>
@@ -74,7 +79,7 @@ const ProductTable = () => {
           </ul>
         </nav>
       </div>
-      <FloatingButton>
+      <FloatingButton handleClick={handleAddProduct}>
         <FaPlus className="floating-icon" />
       </FloatingButton>
     </div>

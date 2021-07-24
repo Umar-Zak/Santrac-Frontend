@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import Logout from './component/Logout';
 import Dashboard from './pages/Dashboard';
 import CheckoutPage from './pages/CheckoutPage';
+import ProductForm from './pages/ProductFormPage';
 
 function App() {
  let user=null
@@ -38,7 +39,11 @@ function App() {
         <RegisterPage/>
       </Route>
       <Route path="/dashboard" render={({ }) => (
-        user?<Dashboard/>:<Redirect path="/"/>
+        user && user.isAdmin? <Dashboard/>:<Redirect path="/"/>
+      )} >
+      </Route>
+      <Route path="/add-product" render={({ }) => (
+        user && user.isAdmin? <ProductForm/>:<Redirect path="/"/>
       )} >
       </Route>
       <Route path="/checkout" render={({ }) => (
