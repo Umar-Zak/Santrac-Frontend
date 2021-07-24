@@ -4,7 +4,11 @@ import { FaPlus } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { getAllCategories, addCategory } from "../utils/products";
+import {
+  getAllCategories,
+  addCategory,
+  updateCategory,
+} from "../utils/products";
 import { paginate } from "../utils/paginate";
 import FloatingButton from "./floating-button";
 import SectionHeader from "./section-header";
@@ -20,16 +24,27 @@ const CategoryTable = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
+  const [id, setId] = useState("");
   const pageSize = 15;
   const handlePageChange = (number) => {
     setPageNumber(number);
   };
   const triggerModal = () => {
+    setCategory("");
+    setId("");
     setShowModal(true);
   };
   const hideModal = () => {
     setShowModal(false);
   };
+
+  const handleRowClick = (id) => {
+    const category = categories.find((c) => c._id === id);
+    setCategory(category);
+    setId(id);
+    setShowModal(true);
+  };
+
   useEffect(() => {
     getAllCategories()
       .then((data) => {
@@ -48,13 +63,17 @@ const CategoryTable = () => {
       <table className="table">
         <thead className="thead">
           <tr>
-            <td>Category Name</td>
-            <td>Date Created</td>
+            <th>Category Name</th>
+            <th>Date Created</th>
           </tr>
         </thead>
         <tbody>
           {categories.map(({ name, created_at, _id }) => (
-            <tr key={_id} className="product-row">
+            <tr
+              onClick={() => handleRowClick(_id)}
+              key={_id}
+              className="product-row"
+            >
               <td>{name}</td>
               <td>{created_at.toString().substr(0, 10)}</td>
             </tr>
@@ -67,12 +86,26 @@ const CategoryTable = () => {
         </Modal.Header>
         <Modal.Body>
           <Formik
-            initialValues={{ name: "" }}
+            initialValues={{ name: category ? category.name : "" }}
             validationSchema={schema}
             onSubmit={async (values) => {
-              addCategory(values)
-                .then(({ _id }) => {
-                  setCategory(_id);
+              if (!id) {
+                addCategory(values)
+                  .then(({ _id }) => {
+                    setCategory(_id);
+                    setShowModal(false);
+                  })
+                  .catch(({ response: { data, status } }) => {
+                    if (status < 500) return toast(data);
+
+                    toast("Unexpected error. Try again");
+                  });
+                return;
+              }
+              updateCategory(id, values)
+                .then((data) => {
+                  setId("");
+                  setCategory(data);
                   setShowModal(false);
                 })
                 .catch(({ response: { data, status } }) => {
@@ -82,7 +115,7 @@ const CategoryTable = () => {
                 });
             }}
           >
-            {({ handleChange, touched, errors }) => (
+            {({ handleChange, touched, errors, values }) => (
               <div className="modal-form">
                 <div className="form-container">
                   <Form>
@@ -94,6 +127,7 @@ const CategoryTable = () => {
                       type="text"
                       name="name"
                       placeholder="Category name"
+                      value={values.name}
                     />
                     <Button
                       type="button--primary button--large"

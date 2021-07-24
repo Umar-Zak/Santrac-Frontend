@@ -89,3 +89,23 @@ export async function addCategory(body){
         throw ex
     }
 }
+
+export async function getAllOrders() {
+    try {
+        const { data } = await http.get("orders/")
+        return data
+    }
+    catch (ex){
+        throw ex
+    }
+}
+
+export async function updateCategory(id, body) {
+    try {
+        const { data } = await http.put(`products/category/${id}`, body)
+        return data
+    }
+    catch (ex) {
+        throw ex
+    }
+}

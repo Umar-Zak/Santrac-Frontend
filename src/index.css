@@ -894,3 +894,7 @@ td {
   width: 25px;
   height: 25px;
 }
+
+.modal-dialog {
+  margin-top: 200px !important;
+}

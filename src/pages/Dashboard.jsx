@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CategoryTable from "../component/category-table";
 import Footer from "../component/footer";
 import Navbar from "../component/navbar";
+import OrdersTable from "../component/orders-table";
 import ProductTable from "../component/products-table";
 
 const Dashboard = () => {
@@ -72,6 +73,7 @@ const Dashboard = () => {
         <div className="content-section">
           {link === "categories" && <CategoryTable />}
           {link === "products" && <ProductTable />}
+          {link === "orders" && <OrdersTable />}
         </div>
       </div>
       <Footer />
