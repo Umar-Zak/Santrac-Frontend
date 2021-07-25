@@ -109,6 +109,14 @@ const CategoryTable = () => {
                   setShowModal(false);
                 })
                 .catch(({ response: { data, status } }) => {
+                  if (status === 402) {
+                    toast(data);
+                    setId("");
+                    setCategory(data);
+                    setShowModal(false);
+                    return;
+                  }
+
                   if (status < 500) return toast(data);
 
                   toast("Unexpected error. Try again");
