@@ -15,6 +15,7 @@ import SectionHeader from "./section-header";
 import Input from "./input";
 import Button from "./button";
 import Error from "./error";
+import Pagination from "../component/pagination";
 
 const CategoryTable = () => {
   const schema = Yup.object().shape({
@@ -80,6 +81,11 @@ const CategoryTable = () => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        pages={pages}
+        handlepagechange={handlePageChange}
+        pagenumber={pageNumber}
+      />
       <Modal show={showModal} onHide={hideModal}>
         <Modal.Header>
           <SectionHeader text="Category Form" />
@@ -150,26 +156,6 @@ const CategoryTable = () => {
         <Modal.Footer></Modal.Footer>
       </Modal>
 
-      <div className="pages">
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            {pages.map((page) => (
-              <li
-                key={page}
-                onClick={() => handlePageChange(page)}
-                key={page}
-                className={
-                  page === pageNumber ? "page-item active" : "page-item"
-                }
-              >
-                <a className="page-link" href="#">
-                  {page}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
       <FloatingButton handleClick={triggerModal}>
         <FaPlus className="floating-icon" />
       </FloatingButton>

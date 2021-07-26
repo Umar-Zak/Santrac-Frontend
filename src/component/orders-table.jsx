@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { getAllOrders } from "../utils/products";
 import { paginate } from "../utils/paginate";
 import OrderDetails from "./order-details-modl";
+import Pagination from "./pagination";
 const OrdersTable = () => {
   let [orders, setOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -19,7 +20,6 @@ const OrdersTable = () => {
     setOrderReference(order.reference);
     setCart(order.cart);
     setShowDetails(true);
-    console.log(orderReference);
   };
 
   const handleHideDetails = () => {
@@ -71,25 +71,11 @@ const OrdersTable = () => {
           )}
         </tbody>
       </table>
-      <div className="pages">
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            {pages.map((page) => (
-              <li
-                onClick={() => handlePagination(page)}
-                key={page}
-                className={
-                  page === pageNumber ? "page-item active" : "page-item"
-                }
-              >
-                <a className="page-link" href="#">
-                  {page}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <Pagination
+        pages={pages}
+        handlepagechange={handlePagination}
+        pagenumber={pageNumber}
+      />
       {showDetails && (
         <OrderDetails
           handleHide={handleHideDetails}

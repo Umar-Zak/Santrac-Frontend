@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { getAllProducts } from "../utils/products";
 import { paginate } from "../utils/paginate";
 import FloatingButton from "./floating-button";
+import Pagination from "./pagination";
 const ProductTable = () => {
   let [products, setProducts] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -62,23 +63,11 @@ const ProductTable = () => {
           )}
         </tbody>
       </table>
-      <div className="pages">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            {pages.map((page) => (
-              <li
-                onClick={() => handlePageChange(page)}
-                key={page}
-                class={page === pageNumber ? "page-item active" : "page-item"}
-              >
-                <a class="page-link" href="#">
-                  {page}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <Pagination
+        pages={pages}
+        handlepagechange={handlePageChange}
+        pagenumber={pageNumber}
+      />
       <FloatingButton handleClick={handleAddProduct}>
         <FaPlus className="floating-icon" />
       </FloatingButton>
