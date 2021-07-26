@@ -61,7 +61,7 @@ const Login = () => {
               {!showSpiner && (
                 <Button text="Login" type="button--primary button--large" />
               )}
-              <div className="spiner-container">{showSpiner && <Spiner />}</div>
+              {showSpiner && <Spiner />}
             </Form>
           )}
         </Formik>

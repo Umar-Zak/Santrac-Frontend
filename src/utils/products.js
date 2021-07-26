@@ -109,3 +109,14 @@ export async function updateCategory(id, body) {
         throw ex
     }
 }
+
+
+export async function addProduct(body) {
+    try {
+        const data = await http.post("products/add", body)
+        return data
+    }
+    catch (ex) {
+        throw ex
+    }
+}

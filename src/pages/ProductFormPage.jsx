@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { getAllCategories } from "../utils/products";
+import { getAllCategories, addProduct } from "../utils/products";
+import { uploadFile } from "../service/firebase";
 import Navbar from "../component/navbar";
 import SectionHeader from "../component/section-header";
 import Input from "../component/input";
 import Button from "../component/button";
 import Error from "../component/error";
 import Footer from "../component/footer";
+import Spiner from "../component/spiner";
 const ProductForm = () => {
   const schema = Yup.object().shape({
     name: Yup.string()
@@ -22,10 +25,26 @@ const ProductForm = () => {
       .required("Quantity is required"),
     category: Yup.string().required("Category is required"),
     description: Yup.string(),
-    image: Yup.string().required("Product image is required"),
   });
 
   const [categories, setCategories] = useState([]);
+  const [image, setImage] = useState({});
+  const history = useHistory();
+  const [spiner, setSpiner] = useState(false);
+  const handleImageInput = ({ target }) => {
+    const file = target.files[0];
+    const types = [
+      "image/png",
+      "image/jpg",
+      "image/gif",
+      "image/jpeg",
+      "image/jfif",
+    ];
+    if (!types.includes(file.type.toLowerCase()))
+      return toast("File must be an image");
+
+    setImage(file);
+  };
 
   useEffect(() => {
     getAllCategories()
@@ -45,8 +64,18 @@ const ProductForm = () => {
       <div className="form-container">
         <SectionHeader text="Product Form" />
         <Formik
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values) => {
+            setSpiner(true);
+            const url = await uploadFile(image);
+            try {
+              await addProduct({ ...values, image: url });
+              history.push("/dashboard");
+            } catch ({ response: { data, status } }) {
+              setSpiner(false);
+              if (status < 400) return toast(data);
+
+              toast("Unexpected error. Please try again");
+            }
           }}
           validationSchema={schema}
           initialValues={{
@@ -55,7 +84,6 @@ const ProductForm = () => {
             description: "",
             quantity: "",
             category: "",
-            image: "",
           }}
         >
           {({ touched, handleChange, errors }) => (
@@ -106,13 +134,14 @@ const ProductForm = () => {
                 rows="5"
                 placeholder="Description"
               ></textarea>
-              {touched.image && errors.image && <Error text={errors.image} />}
-              <Input
-                name="image"
-                handleChange={(event) => event.target.files[0]}
-                type="file"
-              />
-              <Button text="Add Product" type="button--primary button--large" />
+              <Input name="image" handleChange={handleImageInput} type="file" />
+              {spiner && <Spiner />}
+              {!spiner && (
+                <Button
+                  text="Add Product"
+                  type="button--primary button--large"
+                />
+              )}
             </Form>
           )}
         </Formik>
