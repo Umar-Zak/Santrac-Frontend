@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap");
-
 :root {
-  --color--primary: #ffaa01;
+  --color--primary: seagreen;
   --color--hero-image: #e7e7e9;
   --color--nav-link: #737c87;
   --color--hero-text: #132235;
@@ -66,13 +64,18 @@ a {
 }
 
 .section--header {
-  text-transform: uppercase;
-  font-weight: 700;
+  text-transform: capitalize;
+  font-weight: 900;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   line-height: 4.8rem;
-  color: var(--color--section-header);
+  color: var(--color--primary);
   text-align: center;
+  letter-spacing: 1px;
+}
+
+.section--header--light {
+  color: white;
 }
 
 @media screen and (min-width: 1024px) {
@@ -91,24 +94,27 @@ a {
 
 .service__icon {
   font-size: 4rem;
-  margin-bottom: 0;
-  color: #838383;
+  margin-bottom: 2.3rem;
+  color: white;
 }
 
 .service__title {
   font-weight: 700;
-  line-height: 3rem;
+  line-height: 2.1rem;
   font-size: 2rem;
   margin-bottom: -7px;
-  color: #364253;
+  color: var(--color--primary);
   text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 .service__text {
   font-weight: 400;
   line-height: 1.9rem;
   font-size: 1.6rem;
-  color: var(--color--normal-text);
+  color: white;
+  margin-top: 3rem;
+  opacity: 0.9;
 }
 
 @media screen and (min-width: 1024px) {
@@ -119,7 +125,7 @@ a {
 
   .service__title {
     font-size: 1.4rem;
-    margin-bottom: -10px;
+    /* margin-bottom: -10px; */
   }
 
   .service__text {
@@ -144,19 +150,21 @@ a {
 .product__name {
   line-height: 2.2rem;
   font-size: 1.7rem;
-  font-weight: 800;
-  color: #3b4958;
+  font-weight: 900;
+  color: var(--color--primary);
   text-transform: uppercase;
   margin-top: 46px;
   letter-spacing: 1px;
+  font-family: "Inter";
 }
 
 .product__price {
   line-height: 1.8rem;
-  font-weight: 500;
-  color: var(--color--price);
+  font-weight: 400;
+  color: #061621;
   font-size: 1.5rem;
   margin-top: -11px;
+  font-family: "Inter";
 }
 
 @media screen and (min-width: 1024px) {
@@ -171,12 +179,17 @@ a {
 
   .product__name {
     margin-top: 27px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .product__price {
     margin-top: 7px;
+    font-size: 1.2rem;
   }
+}
+
+.navbar-section {
+  background: #273742;
 }
 
 .mobile-nav__header {
@@ -198,7 +211,7 @@ a {
 .bars {
   font-size: 3.5rem;
   line-height: 2rem;
-  color: var(--color--nav-link);
+  color: white;
 }
 
 .mobile-nav--links {
@@ -218,13 +231,15 @@ a {
 }
 
 .mobile--link {
-  color: var(--color--nav-link);
+  color: var(--color--primary);
   font-weight: 500;
   text-transform: uppercase;
   line-height: 2.4rem;
   font-size: 1.6rem;
 }
-
+.close {
+  color: var(--color--primary);
+}
 .mobile--link {
 }
 
@@ -243,7 +258,6 @@ a {
     display: grid;
     grid-template-columns: 20fr 60fr 20fr;
     padding-block: 2rem;
-    border-bottom: 2px solid gainsboro;
     padding-inline: 2rem;
   }
 
@@ -253,14 +267,12 @@ a {
     justify-content: space-evenly;
   }
 
-  .desktop-list--item {
-  }
   .desktop--link {
     text-transform: uppercase;
     font-weight: 600;
     line-height: 2.4rem;
     font-size: 1.4rem;
-    color: var(--color--nav-link);
+    color: white;
     transition: 0.3s all;
   }
 
@@ -282,7 +294,7 @@ a {
   }
 
   .search-icon {
-    color: var(--color--nav-link);
+    color: white;
     font-size: 1.7rem;
     cursor: pointer;
   }
@@ -371,6 +383,10 @@ a {
   border-bottom: 2px solid gainsboro;
 }
 
+.hot--sale {
+  background: white;
+}
+
 @media screen and (min-width: 1024px) {
   .hot-sale-section {
     grid-template-columns: repeat(4, 1fr);
@@ -379,12 +395,13 @@ a {
 
 .services-section {
   padding-block: 3rem;
-  border-bottom: 2px solid gainsboro;
+  border-bottom: 2px solid white;
+  background: #273742;
 }
 
 .services--tagline {
   font-weight: 400;
-  color: var(--color--normal-text);
+  color: white;
   line-height: 2.8rem;
   font-size: 1.8rem;
   text-align: center;
@@ -397,6 +414,10 @@ a {
   column-gap: 2rem;
   row-gap: 2.2rem;
   border-top: 2px solid gainsboro;
+}
+
+.product-section {
+  background: #f9fcfc;
 }
 
 @media screen and (min-width: 1024px) {
@@ -435,7 +456,7 @@ a {
   text-align: center;
   font-weight: 500;
   line-height: 2.4rem;
-  color: var(--color--icon-and-footer);
+  color: var(--color--primary);
   text-transform: capitalize;
 }
 
@@ -445,7 +466,7 @@ a {
 }
 
 .social-icon {
-  color: var(--color--icon-and-footer);
+  color: var(--color--primary);
   font-size: 22px;
   cursor: pointer;
 }
@@ -467,13 +488,23 @@ a {
 
 .about-section {
   padding-block: 3rem;
-  border-bottom: 2px solid gainsboro;
+  background: rgb(33, 51, 61);
+  background: linear-gradient(
+    90deg,
+    rgba(33, 51, 61, 1) 0%,
+    rgba(32, 63, 63, 1) 2%,
+    rgba(31, 74, 65, 1) 19%,
+    rgba(30, 86, 67, 1) 49%,
+    rgba(28, 100, 70, 1) 77%,
+    rgba(22, 147, 78, 1) 99%,
+    rgba(19, 170, 82, 1) 100%
+  );
 }
 .about--tagline {
   font-weight: 500;
   line-height: 2.4rem;
   text-align: center;
-  color: var(--color--normal-text);
+  color: white;
   font-size: 1.8rem;
   margin-bottom: 4.2rem;
 }
@@ -512,17 +543,18 @@ a {
 .mission__title {
   font-weight: 700;
   line-height: 3rem;
-  font-size: 1.7rem;
+  font-size: 2.4rem;
   text-transform: uppercase;
-  color: var(--color--section-header);
+  color: white;
+  letter-spacing: 1px;
 }
 
 .mission__text {
   font-weight: 500;
-  line-height: 2.4rem;
-  font-size: 1.5rem;
-  color: var(--color--normal-text);
-  margin-top: -12px;
+  line-height: 3.4rem;
+  font-size: 1.8rem;
+  color: white;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -533,12 +565,12 @@ a {
 
   .mission__title {
     font-size: 1.5rem;
-    margin-top: -2px;
+    margin-top: 2rem;
   }
 
   .mission__text {
-    font-size: 1.3rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
   }
 }
 

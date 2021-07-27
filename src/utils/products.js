@@ -1,10 +1,10 @@
 import { toast } from "react-toastify"
 import http from "./http"
 const hotProducts = [
-     { _id: 1,name:"Wall tiles",price:120,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/wale-tile.jpg?alt=media&token=cedab714-8a30-474a-b0d4-01abebecf769" },
-     { _id: 2,name:"emulsion paint",price:200,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/emulsion-paint.png?alt=media&token=d62405c8-d442-454e-a6bc-edea33d6b90c" },
-     { _id: 3,name:"azar oil paint",price:1300,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/azar.jpg?alt=media&token=74acaf8b-1a9a-4fe4-8a4b-d0327d407d9b" },
-     { _id: 4,name:"aluminium windows",price:500,description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero temporibus",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/al-windows.jpg?alt=media&token=8bdbb182-1ffc-43f9-9e91-599fedfbe909" },
+     { _id: 1,name:"Wall tiles",price:120,description:"The most advanced cloud database on the market, with unmatched data distribution",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/wale-tile.jpg?alt=media&token=cedab714-8a30-474a-b0d4-01abebecf769" },
+     { _id: 2,name:"emulsion paint",price:200,description:"Run MongoDB on-premises or in your private & hybrid cloud environments",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/emulsion-paint.png?alt=media&token=d62405c8-d442-454e-a6bc-edea33d6b90c" },
+     { _id: 3,name:"azar oil paint",price:1300,description:"Radically simplify your data infrastructure with an application data ",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/azar.jpg?alt=media&token=74acaf8b-1a9a-4fe4-8a4b-d0327d407d9b" },
+     { _id: 4,name:"aluminium windows",price:500,description:"MongoDB’s document data model naturally supports JSON and its express",image:"https://firebasestorage.googleapis.com/v0/b/northlinc-51fbb.appspot.com/o/al-windows.jpg?alt=media&token=8bdbb182-1ffc-43f9-9e91-599fedfbe909" },
 ]
 
 export async function getAllProducts() {
