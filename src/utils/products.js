@@ -120,3 +120,14 @@ export async function addProduct(body) {
         throw ex
     }
 }
+
+
+export async function updateProduct(id, body) {
+    try {
+        const { data } = await http.put(`products/${id}`, body)
+        return data
+    }
+    catch (ex) {
+        throw ex
+    }
+}

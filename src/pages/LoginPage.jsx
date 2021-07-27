@@ -40,7 +40,7 @@ const Login = () => {
           }}
           validationSchema={schema}
         >
-          {({ handleChange, errors, touched }) => (
+          {({ handleChange, errors, touched, values }) => (
             <Form>
               {touched.email && errors.email && <Error text={errors.email} />}
               <Input
@@ -48,6 +48,7 @@ const Login = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
+                value={values.email}
               />
               {touched.password && errors.password && (
                 <Error text={errors.password} />
@@ -57,6 +58,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
+                value={values.password}
               />
               {!showSpiner && (
                 <Button text="Login" type="button--primary button--large" />

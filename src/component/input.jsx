@@ -1,5 +1,5 @@
 import React from "react";
-const Input = ({ handleChange, name, type, placeholder }) => {
+const Input = ({ handleChange, name, value, type, placeholder }) => {
   return (
     <input
       onChange={handleChange}
@@ -7,6 +7,7 @@ const Input = ({ handleChange, name, type, placeholder }) => {
       placeholder={placeholder}
       name={name}
       className="input"
+      value={value}
     />
   );
 };

@@ -47,7 +47,7 @@ const RegisterPage = () => {
             }
           }}
         >
-          {({ errors, touched, handleChange }) => (
+          {({ errors, touched, handleChange, values }) => (
             <Form>
               {touched.username && errors.username && (
                 <Error text={errors.username} />
@@ -57,6 +57,7 @@ const RegisterPage = () => {
                 name="username"
                 type="text"
                 placeholder="Username"
+                value={values.username}
               />
               {touched.email && errors.email && <Error text={errors.email} />}
               <Input
@@ -64,6 +65,7 @@ const RegisterPage = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
+                value={values.email}
               />
               {touched.phone && errors.phone && <Error text={errors.phone} />}
               <Input
@@ -71,6 +73,7 @@ const RegisterPage = () => {
                 name="phone"
                 type="phone"
                 placeholder="Phone number"
+                value={values.phone}
               />
               {touched.password && errors.password && (
                 <Error text={errors.password} />
@@ -80,6 +83,7 @@ const RegisterPage = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
+                value={values.password}
               />
               {!showSpiner && (
                 <Button text="Sign Up" type="button--primary button--large" />
