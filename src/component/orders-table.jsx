@@ -10,7 +10,7 @@ const OrdersTable = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [cart, setCart] = useState([]);
   const [orderReference, setOrderReference] = useState("");
-  const pageSize = 15;
+  const pageSize = 10;
 
   const handlePagination = (number) => {
     setPageNumber(number);

@@ -801,16 +801,34 @@ a {
 .product-table {
   margin-top: 30px;
 }
+
+thead {
+  background: #4b5188e0;
+}
+
 th {
   font-weight: 600;
-  color: var(--color--hero-text);
+  color: white;
   font-size: 1.5rem;
+  border: none;
+  line-height: 2.5rem;
+  text-align: center !important;
 }
 
 td {
   font-weight: 500;
   color: var(--color--nav-link);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  line-height: 2.3rem;
+  text-align: center !important;
+}
+
+.product-row:nth-child(even) {
+  background: #e4e4e6;
+}
+
+.product-row:nth-child(even) td {
+  color: #4b5188e0;
 }
 
 .checkout-region {
@@ -835,12 +853,12 @@ td {
   height: 75vh;
   padding-bottom: 2rem;
   border-bottom: 2px solid gainsboro;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 .navigation {
   height: 100%;
-  background: #eeab24;
+  background: #273742;
 }
 
 .dashboard-links .mobile-list--item {
@@ -849,20 +867,19 @@ td {
 
 .dashboard-links .mobile--link {
   color: white;
+  font-size: 1.4rem;
+  text-transform: capitalize;
 }
 .dashboard .mobile--link:hover {
-  color: var(--color--hero-text);
+  color: seagreen;
 }
 .active-link {
-  color: var(--color--hero-text) !important;
-}
-
-.content-section {
-  padding-inline: 4rem;
+  color: seagreen !important;
 }
 
 .product-row {
   cursor: pointer;
+  height: 45px;
 }
 
 .product-row:hover {
@@ -878,7 +895,7 @@ td {
 .floating-button {
   width: 40px;
   height: 40px;
-  background: var(--color--primary);
+  background: #262a4c;
   display: flex;
   justify-content: center;
   align-items: center;

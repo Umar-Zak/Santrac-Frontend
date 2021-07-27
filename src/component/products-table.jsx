@@ -44,7 +44,7 @@ const ProductTable = () => {
     setShowModal(true);
   };
 
-  const pageSize = 15;
+  const pageSize = 10;
   const history = useHistory();
   const handlePageChange = (page) => {
     setPageNumber(page);

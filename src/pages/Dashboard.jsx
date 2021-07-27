@@ -4,6 +4,7 @@ import Footer from "../component/footer";
 import Navbar from "../component/navbar";
 import OrdersTable from "../component/orders-table";
 import ProductTable from "../component/products-table";
+import UsersTable from "../component/users-table";
 
 const Dashboard = () => {
   const [link, setLink] = useState("categories");
@@ -74,6 +75,7 @@ const Dashboard = () => {
           {link === "categories" && <CategoryTable />}
           {link === "products" && <ProductTable />}
           {link === "orders" && <OrdersTable />}
+          {link === "users" && <UsersTable />}
         </div>
       </div>
       <Footer />

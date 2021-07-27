@@ -1,6 +1,7 @@
 import htpp from "./http"
 import jwt_decode from "jwt-decode"
 import {toast} from "react-toastify"
+import http from "./http"
 export async function login(body) {
     
     try {
@@ -23,6 +24,17 @@ export async function register(body) {
         localStorage.setItem("token", data)
         toast("You are successfully registered")
         window.location="/"
+    }
+    catch (ex) {
+        throw ex
+    }
+}
+
+
+export async function getAllUsers() {
+    try {
+        const { data } = await http.get("users/all")
+        return data
     }
     catch (ex) {
         throw ex

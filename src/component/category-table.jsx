@@ -26,7 +26,7 @@ const CategoryTable = () => {
   const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
   const [id, setId] = useState("");
-  const pageSize = 15;
+  const pageSize = 10;
   const handlePageChange = (number) => {
     setPageNumber(number);
   };
