@@ -86,7 +86,7 @@ const ProductForm = () => {
             category: "",
           }}
         >
-          {({ touched, handleChange, errors }) => (
+          {({ touched, handleChange, errors,values }) => (
             <Form>
               {touched.name && errors.name && <Error text={errors.name} />}
               <Input

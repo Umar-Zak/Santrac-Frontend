@@ -26,8 +26,8 @@ const ProductPage = () => {
   };
   return (
     <React.Fragment>
+      <Navbar />
       <div className="block">
-        <Navbar />
         <div className="product-page-header-container">
           <SectionHeader text="Products" />
         </div>
@@ -48,9 +48,9 @@ const ProductPage = () => {
         </div>
 
         <div className="divider"></div>
-        <Footer />
         <Cart />
       </div>
+      <Footer />
     </React.Fragment>
   );
 };

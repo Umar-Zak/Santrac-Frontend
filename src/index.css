@@ -72,10 +72,20 @@ a {
   color: var(--color--primary);
   text-align: center;
   letter-spacing: 1px;
+  text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc,
+    1px 2px 1px #eeeeee, 3px 2px 1px #cccccc, 2px 3px 1px #eeeeee,
+    4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
+    4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee,
+    7px 6px 1px #cccccc;
 }
 
 .section--header--light {
   color: white;
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (min-width: 1024px) {
@@ -139,32 +149,48 @@ a {
   margin-right: auto;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 5px 5px 10px #c1c1c1, -5px -5px 10px #ffffff;
+  font-family: "Inter" !important;
+}
+.product--body {
+  padding-inline: 2.5rem;
+  padding-block: 1.3rem;
+}
+
+.product--footer {
+  background: #28c8a4;
+  height: 40px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product__image {
   width: 100%;
-  height: 320px;
   background: #ebebeb;
 }
 
 .product__name {
   line-height: 2.2rem;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 900;
-  color: var(--color--primary);
+  color: #28c8a4;
   text-transform: uppercase;
   margin-top: 46px;
   letter-spacing: 1px;
   font-family: "Inter";
+  text-align: center;
 }
 
 .product__price {
   line-height: 1.8rem;
-  font-weight: 400;
-  color: #061621;
+  font-weight: 700;
+  color: white;
   font-size: 1.5rem;
   margin-top: -11px;
   font-family: "Inter";
+  text-align: center;
 }
 
 @media screen and (min-width: 1024px) {
@@ -350,6 +376,11 @@ a {
   opacity: 1;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc,
+    1px 2px 1px #eeeeee, 3px 2px 1px #cccccc, 2px 3px 1px #eeeeee,
+    4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
+    4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee,
+    7px 6px 1px #cccccc;
 }
 .hero--text-container {
   padding-top: 340px;
@@ -449,6 +480,10 @@ a {
 
 .footer {
   padding-block: 1.2rem;
+  height: 90px;
+}
+.footer-section {
+  background: #21313c;
 }
 
 .copy-right {
@@ -804,7 +839,7 @@ a {
 .cart {
   width: 40px;
   height: 40px;
-  color: var(--color--primary);
+  color: #28c8a4;
   cursor: pointer;
 }
 
@@ -885,7 +920,7 @@ td {
   height: 75vh;
   padding-bottom: 2rem;
   border-bottom: 2px solid gainsboro;
-  margin-top: 0px;
+  margin-top: 20px;
 }
 
 .navigation {

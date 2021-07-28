@@ -14,68 +14,72 @@ const Dashboard = () => {
     setLink(name);
   };
   return (
-    <div className="block">
+    <div>
       <Navbar />
-      <div className="dashboard">
-        <div className="navigation">
-          <ul className="dashboard-links">
-            <li className="mobile-list--item">
-              <a
-                href="#"
-                onClick={(event) => handleLinkClick(event, "categories")}
-                className={
-                  link === "categories"
-                    ? "mobile--link active-link"
-                    : "mobile--link"
-                }
-              >
-                Categories
-              </a>
-            </li>
-            <li className="mobile-list--item">
-              <a
-                href="#"
-                onClick={(event) => handleLinkClick(event, "products")}
-                className={
-                  link === "products"
-                    ? "mobile--link active-link"
-                    : "mobile--link"
-                }
-              >
-                Products
-              </a>
-            </li>
-            <li className="mobile-list--item">
-              <a
-                href="#"
-                onClick={(event) => handleLinkClick(event, "orders")}
-                className={
-                  link === "orders"
-                    ? "mobile--link active-link"
-                    : "mobile--link"
-                }
-              >
-                Orders
-              </a>
-            </li>
-            <li className="mobile-list--item">
-              <a
-                href="#"
-                onClick={(event) => handleLinkClick(event, "users")}
-                className={
-                  link === "users" ? "mobile--link active-link" : "mobile--link"
-                }
-              >
-                Users
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="content-section">
-          {link === "categories" && <CategoryTable />}
-          {link === "products" && <ProductTable />}
-          {link === "orders" && <OrdersTable />}
-          {link === "users" && <UsersTable />}
+      <div className="">
+        <div className="dashboard">
+          <div className="navigation">
+            <ul className="dashboard-links">
+              <li className="mobile-list--item">
+                <a
+                  href="#"
+                  onClick={(event) => handleLinkClick(event, "categories")}
+                  className={
+                    link === "categories"
+                      ? "mobile--link active-link"
+                      : "mobile--link"
+                  }
+                >
+                  Categories
+                </a>
+              </li>
+              <li className="mobile-list--item">
+                <a
+                  href="#"
+                  onClick={(event) => handleLinkClick(event, "products")}
+                  className={
+                    link === "products"
+                      ? "mobile--link active-link"
+                      : "mobile--link"
+                  }
+                >
+                  Products
+                </a>
+              </li>
+              <li className="mobile-list--item">
+                <a
+                  href="#"
+                  onClick={(event) => handleLinkClick(event, "orders")}
+                  className={
+                    link === "orders"
+                      ? "mobile--link active-link"
+                      : "mobile--link"
+                  }
+                >
+                  Orders
+                </a>
+              </li>
+              <li className="mobile-list--item">
+                <a
+                  href="#"
+                  onClick={(event) => handleLinkClick(event, "users")}
+                  className={
+                    link === "users"
+                      ? "mobile--link active-link"
+                      : "mobile--link"
+                  }
+                >
+                  Users
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="content-section">
+            {link === "categories" && <CategoryTable />}
+            {link === "products" && <ProductTable />}
+            {link === "orders" && <OrdersTable />}
+            {link === "users" && <UsersTable />}
+          </div>
         </div>
       </div>
       <Footer />

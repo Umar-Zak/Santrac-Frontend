@@ -27,74 +27,76 @@ const RegisterPage = () => {
   });
 
   return (
-    <div className="block">
+    <div>
       <Navbar />
-
-      <div className="form-container">
-        <SectionHeader text="Register" />
-        <Formik
-          initialValues={{ username: "", password: "", phone: "", email: "" }}
-          validationSchema={schema}
-          onSubmit={async (values) => {
-            try {
-              setShowSpiner(true);
-              await register(values);
-            } catch ({ response: { data, status } }) {
-              setShowSpiner(false);
-              if (status === 400) return toast(data);
-
-              toast("Unexpected error. Try again");
-            }
-          }}
-        >
-          {({ errors, touched, handleChange, values }) => (
-            <Form>
-              {touched.username && errors.username && (
-                <Error text={errors.username} />
-              )}
-              <Input
-                handleChange={handleChange}
-                name="username"
-                type="text"
-                placeholder="Username"
-                value={values.username}
-              />
-              {touched.email && errors.email && <Error text={errors.email} />}
-              <Input
-                handleChange={handleChange}
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={values.email}
-              />
-              {touched.phone && errors.phone && <Error text={errors.phone} />}
-              <Input
-                handleChange={handleChange}
-                name="phone"
-                type="phone"
-                placeholder="Phone number"
-                value={values.phone}
-              />
-              {touched.password && errors.password && (
-                <Error text={errors.password} />
-              )}
-              <Input
-                handleChange={handleChange}
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={values.password}
-              />
-              {!showSpiner && (
-                <Button text="Sign Up" type="button--primary button--large" />
-              )}
-              <div className="spiner-container">{showSpiner && <Spiner />}</div>
-            </Form>
-          )}
-        </Formik>
-        <Link className="register-login" to="/login">
-          Already have an account? Sign In
-        </Link>
+      <div className="block">
+        <div className="form-container">
+          <SectionHeader text="Register" />
+          <Formik
+            initialValues={{ username: "", password: "", phone: "", email: "" }}
+            validationSchema={schema}
+            onSubmit={async (values) => {
+              try {
+                setShowSpiner(true);
+                await register(values);
+              } catch ({ response: { data, status } }) {
+                setShowSpiner(false);
+                if (status === 400) return toast(data);
+                toast("Unexpected error. Try again");
+              }
+            }}
+          >
+            {({ errors, touched, handleChange, values }) => (
+              <Form>
+                {touched.username && errors.username && (
+                  <Error text={errors.username} />
+                )}
+                <Input
+                  handleChange={handleChange}
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                  value={values.username}
+                />
+                {touched.email && errors.email && <Error text={errors.email} />}
+                <Input
+                  handleChange={handleChange}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={values.email}
+                />
+                {touched.phone && errors.phone && <Error text={errors.phone} />}
+                <Input
+                  handleChange={handleChange}
+                  name="phone"
+                  type="phone"
+                  placeholder="Phone number"
+                  value={values.phone}
+                />
+                {touched.password && errors.password && (
+                  <Error text={errors.password} />
+                )}
+                <Input
+                  handleChange={handleChange}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={values.password}
+                />
+                {!showSpiner && (
+                  <Button text="Sign Up" type="button--primary button--large" />
+                )}
+                <div className="spiner-container">
+                  {showSpiner && <Spiner />}
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <Link className="register-login" to="/login">
+            Already have an account? Sign In
+          </Link>
+        </div>
       </div>
     </div>
   );

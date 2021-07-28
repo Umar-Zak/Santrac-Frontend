@@ -85,7 +85,7 @@ const HomePage = () => {
       </section>
       <section className="product-section">
         <div className="block">
-          <SectionHeader text="Products" />
+          <SectionHeader text="Featured Products" />
           <div className="product-container">
             {products.map((p) => {
               return (

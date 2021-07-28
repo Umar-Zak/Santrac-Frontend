@@ -73,7 +73,6 @@ const CheckoutPage = () => {
         window.location = "/";
       })
       .catch(({ response: { status, data } }) => {
-        console.log(status, data);
         if (status < 500) return toast(data);
 
         toast("Unexpected error. Please contact our office lines");
@@ -87,68 +86,70 @@ const CheckoutPage = () => {
   const pay = usePaystackPayment(config);
 
   return (
-    <div className="block">
+    <div>
       <Navbar />
-      <div className="checkout-container">
-        <SectionHeader text="Review Cart" />
-        <table className="table product-table">
-          <thead>
-            <tr>
-              <th>Product name</th>
-              <th>Price (GHS)</th>
-              <th>Quantity</th>
-              <th>Amount (GHS)</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((p) => (
-              <tr key={p._id}>
-                <td>{p.name}</td>
-                <td>{p.price}</td>
-                <td>{p.quantity}</td>
-                <td>{p.amount}</td>
-                <td>
-                  <button
-                    onClick={() => handleDecrement(p._id)}
-                    className="btn btn-secondary"
-                  >
-                    -
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleIncrement(p._id)}
-                    className="btn btn-primary"
-                  >
-                    +
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(p._id)}
-                    className="btn btn-danger"
-                  >
-                    Delete
-                  </button>
-                </td>
+      <div className="block">
+        <div className="checkout-container">
+          <SectionHeader text="Review Cart" />
+          <table className="table product-table">
+            <thead>
+              <tr>
+                <th>Product name</th>
+                <th>Price (GHS)</th>
+                <th>Quantity</th>
+                <th>Amount (GHS)</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {cart.length > 0 && (
-          <div className="checkout-region">
-            <h4 className="amount">GHS {calculateAmount(cart)}.00</h4>
-            <button
-              onClick={() => pay(onSuccess, onClose)}
-              className="button button--primary"
-            >
-              Checkout
-            </button>
-          </div>
-        )}
+            </thead>
+            <tbody>
+              {cart.map((p) => (
+                <tr key={p._id}>
+                  <td>{p.name}</td>
+                  <td>{p.price}</td>
+                  <td>{p.quantity}</td>
+                  <td>{p.amount}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDecrement(p._id)}
+                      className="btn btn-secondary"
+                    >
+                      -
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleIncrement(p._id)}
+                      className="btn btn-primary"
+                    >
+                      +
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(p._id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {cart.length > 0 && (
+            <div className="checkout-region">
+              <h4 className="amount">GHS {calculateAmount(cart)}.00</h4>
+              <button
+                onClick={() => pay(onSuccess, onClose)}
+                className="button button--primary"
+              >
+                Checkout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -20,56 +20,57 @@ const Login = () => {
   const [showSpiner, setShowSpiner] = useState(false);
 
   return (
-    <div className="block">
+    <div>
       <Navbar />
 
-      <div className="form-container">
-        <SectionHeader text="Login" />
-        <Formik
-          initialValues={{ email: "", password: "" }}
-          onSubmit={async (values) => {
-            try {
-              setShowSpiner(true);
-              await login(values);
-            } catch ({ response: { data, status } }) {
-              setShowSpiner(false);
-              if (status === 400) return toast(data);
-
-              toast("Unexpected error. Try again");
-            }
-          }}
-          validationSchema={schema}
-        >
-          {({ handleChange, errors, touched, values }) => (
-            <Form>
-              {touched.email && errors.email && <Error text={errors.email} />}
-              <Input
-                handleChange={handleChange}
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={values.email}
-              />
-              {touched.password && errors.password && (
-                <Error text={errors.password} />
-              )}
-              <Input
-                handleChange={handleChange}
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={values.password}
-              />
-              {!showSpiner && (
-                <Button text="Login" type="button--primary button--large" />
-              )}
-              {showSpiner && <Spiner />}
-            </Form>
-          )}
-        </Formik>
-        <Link className="register-login" to="/register">
-          Don't have an account? Sign up
-        </Link>
+      <div className="block">
+        <div className="form-container">
+          <SectionHeader text="Login" />
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            onSubmit={async (values) => {
+              try {
+                setShowSpiner(true);
+                await login(values);
+              } catch ({ response: { data, status } }) {
+                setShowSpiner(false);
+                if (status === 400) return toast(data);
+                toast("Unexpected error. Try again");
+              }
+            }}
+            validationSchema={schema}
+          >
+            {({ handleChange, errors, touched, values }) => (
+              <Form>
+                {touched.email && errors.email && <Error text={errors.email} />}
+                <Input
+                  handleChange={handleChange}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={values.email}
+                />
+                {touched.password && errors.password && (
+                  <Error text={errors.password} />
+                )}
+                <Input
+                  handleChange={handleChange}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={values.password}
+                />
+                {!showSpiner && (
+                  <Button text="Login" type="button--primary button--large" />
+                )}
+                {showSpiner && <Spiner />}
+              </Form>
+            )}
+          </Formik>
+          <Link className="register-login" to="/register">
+            Don't have an account? Sign up
+          </Link>
+        </div>
       </div>
     </div>
   );
